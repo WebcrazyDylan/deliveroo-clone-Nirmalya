@@ -26,7 +26,7 @@ export default defineType({
           type: 'reference',
           to: [
             {
-              type: 'resturants',
+              type: 'resturant',
             },
           ],
         },
