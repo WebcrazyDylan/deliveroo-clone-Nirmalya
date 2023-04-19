@@ -27,14 +27,14 @@ export default function HomeScreen() {
     sanityClient
       .fetch(
         `
-      *[ _type == "featured" ] {
-        ...,
-        resturants[]->{
-          ...,
-          dishes[]->
-        }
-      }
-    `
+          *[ _type == "featured" ] {
+            ...,
+            resturants[]->{
+              ...,
+              dishes[]->
+            }
+          }
+        `
       )
       .then((data) => {
         setFeaturedCategories(data);
@@ -84,26 +84,14 @@ export default function HomeScreen() {
         {/* CATEGORIES */}
         <Categories />
 
-        {/* FEATURED */}
-        <FeaturedRow
-          id="1"
-          title="Featured"
-          description="Paid Placement from Our Partners."
-        />
-
-        {/* TASTY DISCOUNT */}
-        <FeaturedRow
-          id="2"
-          title="Tasty Discounts"
-          description="Enjoy these Juicy Discounts!"
-        />
-
-        {/* OFFERS NEAR YOU */}
-        <FeaturedRow
-          id="3"
-          title="Offers Near You."
-          description="Why not Support Local Resturants Tonight!"
-        />
+        {featuredCategories?.map((category) => (
+          <FeaturedRow
+            key={category._id}
+            id={category._id}
+            title={category.name}
+            description={category.short_description}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
