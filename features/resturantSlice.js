@@ -10,6 +10,8 @@ const initialState = {
     address: null,
     short_description: null,
     dishes: null,
+    lon: null,
+    lat: null,
   },
 };
 
