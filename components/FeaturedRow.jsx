@@ -29,8 +29,6 @@ const FeaturedRow = ({ id, title, description }) => {
       });
   }, []);
 
-  console.log(resturants);
-
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
@@ -49,42 +47,22 @@ const FeaturedRow = ({ id, title, description }) => {
         className="pt-4"
       >
         {/* ResturantCards */}
-        <ResturantCard
-          id={1}
-          imgUrl="https://links.papareact.com/wru"
-          title="text"
-          rating={4.5}
-          genre="Chineese"
-          address="Mukundapur"
-          short_description="short desc"
-          dishes={[]}
-          lon={1231232131}
-          lat={3142342344}
-        />
-        <ResturantCard
-          id={1}
-          imgUrl="https://links.papareact.com/wru"
-          title="text"
-          rating={4.5}
-          genre="Chineese"
-          address="Mukundapur"
-          short_description="short desc"
-          dishes={[]}
-          lon={1231232131}
-          lat={3142342344}
-        />
-        <ResturantCard
-          id={1}
-          imgUrl="https://links.papareact.com/wru"
-          title="text"
-          rating={4.5}
-          genre="Chineese"
-          address="Mukundapur"
-          short_description="short desc"
-          dishes={[]}
-          lon={1231232131}
-          lat={3142342344}
-        />
+
+        {resturants?.map((resturant) => (
+          <ResturantCard
+            id={resturant._id}
+            key={resturant._id}
+            lon={resturant.lon}
+            lat={resturant.lat}
+            title={resturant.name}
+            imgUrl={resturant.image}
+            dishes={resturant.dishes}
+            rating={resturant.rating}
+            address={resturant.address}
+            genre={resturant.type?.name}
+            short_description={resturant.short_description}
+          />
+        ))}
       </ScrollView>
     </View>
   );
