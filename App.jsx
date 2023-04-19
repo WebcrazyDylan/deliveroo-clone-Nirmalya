@@ -3,11 +3,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import "react-native-url-polyfill/auto";
 
 import HomeScreen from "./screens/HomeScreen";
+import BasketScreen from "./screens/BasketScreen";
 import ResturantScreen from "./screens/ResturantScreen";
+import PreparingOrderScreen from "./screens/PreparingOrderScreen";
 
 import { store } from "./store";
 import { Provider } from "react-redux";
-import BasketScreen from "./screens/BasketScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,14 @@ export default function App() {
             component={BasketScreen}
             options={{
               presentation: "modal",
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="PreparingOrder"
+            component={PreparingOrderScreen}
+            options={{
+              presentation: "fullScreenModal",
               headerShown: false,
             }}
           />
