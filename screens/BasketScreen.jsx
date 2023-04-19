@@ -3,7 +3,11 @@ import React, { useMemo, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectResturant } from "../features/resturantSlice";
-import { removeFromBasket, selectBasketItems } from "../features/basketSlice";
+import {
+  removeFromBasket,
+  selectBasketItems,
+  selectBasketTotal,
+} from "../features/basketSlice";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { XCircleIcon } from "react-native-heroicons/solid";
 import Currency from "react-currency-formatter";
@@ -14,6 +18,7 @@ const BasketScreen = () => {
   const navigation = useNavigation();
   const resturant = useSelector(selectResturant);
   const items = useSelector(selectBasketItems);
+  const basketTotal = useSelector(selectBasketTotal);
   const dispatch = useDispatch();
 
   useMemo(() => {
@@ -24,8 +29,6 @@ const BasketScreen = () => {
 
     setGroupedItemsInBasket(groupedItems);
   }, [items]);
-
-  console.log(groupedItemsInBasket);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -89,6 +92,35 @@ const BasketScreen = () => {
             </View>
           ))}
         </ScrollView>
+
+        <View className="p-5 bg-white mt-5 space-y-4">
+          <View className="flex-row justify-between">
+            <Text className="text-gray-400">Sub Total</Text>
+            <Text className="text-gray-400">
+              <Currency quantity={basketTotal} currency="GBP" />
+            </Text>
+          </View>
+
+          <View className="flex-row justify-between">
+            <Text className="text-gray-400">Delivery Fee</Text>
+            <Text className="text-gray-400">
+              <Currency quantity={5.99} currency="GBP" />
+            </Text>
+          </View>
+
+          <View className="flex-row justify-between">
+            <Text className="text-black">Order Total</Text>
+            <Text className="text-black font-extrabold">
+              <Currency quantity={basketTotal + 5.99} currency="GBP" />
+            </Text>
+          </View>
+
+          <TouchableOpacity className="rounded-lg bg-[#00CCBB] p-4">
+            <Text className="text-center text-white text-lg font-bold">
+              Place Order
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
