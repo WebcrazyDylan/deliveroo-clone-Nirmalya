@@ -46,6 +46,9 @@ dependencies:
   react-native-heroicons:
     specifier: ^3.2.0
     version: 3.2.0(react-native-svg@13.4.0)(react@18.2.0)
+  react-native-progress:
+    specifier: ^5.0.0
+    version: 5.0.0(react-native-svg@13.4.0)
   react-native-safe-area-context:
     specifier: 4.5.0
     version: 4.5.0(react-native@0.71.6)(react@18.2.0)
@@ -8019,6 +8022,15 @@ packages:
       react-native-svg: '>=9'
     dependencies:
       react: 18.2.0
+      react-native-svg: 13.4.0(react-native@0.71.6)(react@18.2.0)
+    dev: false
+
+  /react-native-progress@5.0.0(react-native-svg@13.4.0):
+    resolution: {integrity: sha512-KjnGIt3r9i5Kn2biOD9fXLJocf0bwxPRxOyAgXEnZTJQU2O+HyzgGFRCbM5h3izm9kKIkSc1txh8aGmMafCD9A==}
+    peerDependencies:
+      react-native-svg: '*'
+    dependencies:
+      prop-types: 15.8.1
       react-native-svg: 13.4.0(react-native@0.71.6)(react@18.2.0)
     dev: false
 
